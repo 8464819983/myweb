@@ -40,7 +40,7 @@ pipeline{
             }
         stage('Build Docker Image'){
             steps{
-                 sh 'docker build -t krishnabhargava366/spring-boot-mongo .'
+                 sh 'docker build -t krishnabhargava366/spring-boot-mong .'
                  sh 'docker build -t tomcat:${BUILD_NUMBER} .'
                  sh 'docker run -itd --name dbk -p 3900:8080 tomcat:${BUILD_NUMBER}'
              }
@@ -50,7 +50,7 @@ pipeline{
                   withCredentials([string(credentialsId: 'DOCKER_HUB_CREDENTIALS', variable: 'DOCKER_HUB_CREDENTIALS')]) {
                       sh "docker login -u krishnabhargava366 -p ${DOCKER_HUB_CREDENTIALS}"
             }
-            sh 'docker push krishnabhargava366/spring-boot-mongo'
+            sh 'docker push krishnabhargava366/spring-boot-mong'
         }
       }
         
